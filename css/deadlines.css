@@ -1,0 +1,132 @@
+/* Deadlines screen only. Owner: Deadlines. Every rule starts with .screen-deadlines and uses tokens only. */
+
+.screen-deadlines .dl-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.screen-deadlines .dl-toggle {
+  display: inline-flex;
+  gap: 0;
+}
+.screen-deadlines .dl-toggle .btn { border-radius: 0; }
+.screen-deadlines .dl-toggle .btn:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.screen-deadlines .dl-toggle .btn:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-left: -1px; }
+
+.screen-deadlines .dl-section,
+.screen-deadlines .dl-agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.screen-deadlines .dl-count { font-weight: 400; }
+
+/* ---------- Rows ---------- */
+
+.screen-deadlines .dl-list {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.screen-deadlines .dl-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  min-width: 0;
+}
+.screen-deadlines .dl-row:last-child { border-bottom: 0; }
+.screen-deadlines .dl-row.is-overdue { border-left-color: var(--danger); }
+
+.screen-deadlines .dl-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 260px;
+  min-width: 0;
+}
+.screen-deadlines .dl-title { font-weight: 600; }
+.screen-deadlines span.dl-title { color: var(--text); }
+
+.screen-deadlines .dl-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 12px;
+  font-size: 13px;
+}
+.screen-deadlines .dl-amount { color: var(--text); font-weight: 600; }
+
+.screen-deadlines .dl-side {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 12px;
+  flex: 0 1 auto;
+}
+
+/* ---------- Done (collapsed) ---------- */
+
+.screen-deadlines .dl-done > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--tap);
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.screen-deadlines .dl-done > summary::before { content: "\25B8"; color: var(--muted); }
+.screen-deadlines .dl-done[open] > summary::before { content: "\25BE"; }
+.screen-deadlines .dl-done > summary::-webkit-details-marker { display: none; }
+.screen-deadlines .dl-done > summary { list-style: none; }
+.screen-deadlines .dl-done > .dl-list,
+.screen-deadlines .dl-done > .empty { margin-top: 8px; }
+
+/* ---------- Calendar ---------- */
+
+.screen-deadlines .cal-head .btn { min-width: var(--tap); font-size: 18px; }
+.screen-deadlines .dl-daynum { font-variant-numeric: tabular-nums; }
+
+/* Count chip: phone only. Text count plus color, never color alone. */
+.screen-deadlines .dl-dot {
+  display: none;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--accent-weak);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+.screen-deadlines .dl-dot.is-overdue { border-color: var(--danger); background: var(--danger-weak); color: var(--danger); }
+.screen-deadlines .dl-dot.is-soon { border-color: var(--warn); background: var(--warn-weak); color: var(--warn); }
+
+.screen-deadlines .dl-agenda { display: none; }
+
+@media (max-width: 599px) {
+  .screen-deadlines .cal-day { min-height: 48px; align-items: center; }
+  .screen-deadlines .cal-day .cal-item { display: none; }
+  .screen-deadlines .dl-dot { display: inline-flex; }
+  .screen-deadlines .dl-dow-rest { display: none; }
+  .screen-deadlines .dl-agenda { display: flex; }
+  .screen-deadlines .dl-none { display: none; }
+  .screen-deadlines .dl-row { padding: 12px; }
+  .screen-deadlines .dl-side { justify-content: flex-start; flex-basis: 100%; }
+}

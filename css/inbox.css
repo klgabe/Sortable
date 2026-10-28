@@ -1,0 +1,118 @@
+/* Inbox-only styles. Owner: Intake. Every rule starts with .screen-inbox and uses tokens only. */
+
+.screen-inbox h2 { font-size: 17px; }
+
+/* Confirmation after filing */
+.screen-inbox .inbox-notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--accent-weak);
+  border-color: var(--accent);
+}
+.screen-inbox .inbox-notice > * + * { margin-top: 0; }
+.screen-inbox .inbox-notice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1 1 240px;
+}
+.screen-inbox .inbox-notice-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  min-width: 0;
+}
+.screen-inbox .inbox-notice-row a { font-weight: 600; }
+
+/* Intake card: Simulate button and drop zone */
+.screen-inbox .inbox-intake-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.screen-inbox .inbox-intake-head p { font-size: 14px; }
+.screen-inbox .inbox-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.screen-inbox .inbox-file-input:focus-visible + .inbox-choose {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.screen-inbox .dropzone { position: relative; }
+.screen-inbox .dropzone strong { color: var(--text); }
+
+/* Review queue */
+.screen-inbox .inbox-queue-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.screen-inbox .inbox-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.screen-inbox .inbox-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  min-width: 0;
+}
+.screen-inbox .inbox-row:last-child { border-bottom: 0; }
+.screen-inbox .inbox-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 280px;
+  min-width: 0;
+}
+.screen-inbox .inbox-filename { font-size: 15px; }
+.screen-inbox .inbox-source { font-size: 13px; }
+.screen-inbox .inbox-guess,
+.screen-inbox .inbox-confidence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  font-size: 14px;
+}
+.screen-inbox .inbox-guess-name { font-weight: 500; }
+.screen-inbox .inbox-row-actions { flex: none; }
+
+.screen-inbox .inbox-fix {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 100%;
+  min-width: 0;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.screen-inbox .inbox-fix > p { font-size: 13px; }
+
+@media (max-width: 599px) {
+  .screen-inbox .inbox-intake-head .inbox-simulate { flex: 1 1 100%; }
+  .screen-inbox .inbox-row-actions { flex: 1 1 100%; justify-content: stretch; }
+  .screen-inbox .inbox-row-actions .btn { flex: 1 1 0; }
+  .screen-inbox .alt-buttons .btn { flex: 1 1 100%; }
+}

@@ -1,0 +1,51 @@
+/* Setup screen only. Owner: Intake. Every rule starts with .screen-setup and uses tokens only. */
+
+.screen-setup .setup-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 12px var(--gap);
+  margin: 12px 0 0;
+}
+.screen-setup .setup-details dt {
+  color: var(--muted);
+  font-size: 13px;
+}
+.screen-setup .setup-details dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+.screen-setup .setup-channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--gap);
+}
+.screen-setup .setup-channels > * { min-width: 0; }
+
+.screen-setup .setup-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.screen-setup .setup-value {
+  flex: 1 1 220px;
+  min-width: 0;
+  width: 100%;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+}
+.screen-setup .setup-copy .btn { flex: none; min-width: 88px; }
+
+.screen-setup .setup-feedback {
+  min-height: 1.5em;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.screen-setup .card > .setup-feedback { margin-top: 4px; }
+
+@media (max-width: 599px) {
+  .screen-setup .setup-copy .btn { flex: 1 1 100%; }
+}

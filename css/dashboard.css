@@ -1,0 +1,133 @@
+/* Dashboard-only styles. Owner: Deadlines. Every rule starts with .screen-dashboard. Tokens only. */
+
+.screen-dashboard .dash-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--gap);
+}
+.screen-dashboard .dash-grid > * { min-width: 0; }
+
+@media (min-width: 900px) {
+  .screen-dashboard .dash-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "overdue overdue"
+      "due     creds"
+      "review  review"
+      "outbox  outbox";
+    align-items: start;
+  }
+  .screen-dashboard .dash-overdue { grid-area: overdue; }
+  .screen-dashboard .dash-due { grid-area: due; }
+  .screen-dashboard .dash-creds { grid-area: creds; }
+  .screen-dashboard .dash-reviewq { grid-area: review; }
+  .screen-dashboard .dash-outbox-panel { grid-area: outbox; }
+}
+
+/* Panel header: title plus a count chip */
+.screen-dashboard .dash-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.screen-dashboard .dash-count {
+  min-width: 28px;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+.screen-dashboard .dash-note { font-size: 13px; }
+
+/* Overdue panel in red */
+.screen-dashboard .dash-overdue {
+  border-color: var(--danger);
+  border-left-width: 4px;
+}
+.screen-dashboard .dash-overdue h2 { color: var(--danger); }
+.screen-dashboard .dash-overdue .dash-count {
+  color: var(--danger);
+  background: var(--danger-weak);
+  border-color: var(--danger);
+}
+
+/* Deadline rows */
+.screen-dashboard .dash-list {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+.screen-dashboard .dash-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.screen-dashboard .dash-row:last-child { border-bottom: 0; }
+.screen-dashboard .dash-row.is-overdue { background: var(--danger-weak); }
+.screen-dashboard .dash-row.is-overdue .dash-title { color: var(--danger); }
+
+.screen-dashboard .dash-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.screen-dashboard .dash-main .muted { font-size: 13px; }
+.screen-dashboard .dash-title { font-weight: 600; }
+
+.screen-dashboard .dash-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  font-size: 13px;
+}
+.screen-dashboard .dash-date { color: var(--muted); white-space: nowrap; }
+.screen-dashboard .dash-amount { font-weight: 600; white-space: nowrap; }
+
+/* Review queue */
+.screen-dashboard .dash-review {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+.screen-dashboard .dash-big {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+/* Outbox */
+.screen-dashboard .dash-outbox {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--gap);
+}
+.screen-dashboard .dash-outbox-col { min-width: 0; }
+.screen-dashboard .dash-outbox-col > * + * { margin-top: 8px; }
+.screen-dashboard .dash-outbox-col h3 { color: var(--muted); }
+.screen-dashboard .outbox {
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+}
+.screen-dashboard .outbox > .outbox-row { align-items: center; }
+
+@media (min-width: 900px) {
+  .screen-dashboard .dash-outbox { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+}
